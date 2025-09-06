@@ -1,0 +1,9 @@
+vendor/
+.vscode/
+.env
+.env.dev
+.env.prod
+.env.local
+.env.development
+.env.production
+composer.lock
