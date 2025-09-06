@@ -4,6 +4,7 @@
    "description": "PhpSPA Project Template",
    "homepage": "https://github.com/dconco/phpspa-template",
    "keywords": [ "phpspa", "php" ],
+   "license": "MIT",
    "authors": [
       {
          "name": "dconco",
