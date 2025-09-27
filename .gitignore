@@ -1,5 +1,7 @@
-vendor/
 .vscode/
+node_modules/
+vendor/
+public/dist/
 .env
 .env.dev
 .env.prod
@@ -7,3 +9,5 @@ vendor/
 .env.development
 .env.production
 composer.lock
+pnpm-lock.yaml
+package-lock.json

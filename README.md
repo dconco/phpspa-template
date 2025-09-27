@@ -10,6 +10,43 @@ cd MyApp
 composer start
 ```
 
+## Development
+
+### With PHP Development Server
+
+```bash
+php -S localhost:8000 -t public
+```
+
+### With Apache
+
+1. Point your Apache document root to the `public/` directory
+2. Or create a virtual host:
+
+```apache
+<VirtualHost *:80>
+    DocumentRoot /path/to/project/public
+    ServerName myapp.local
+    
+    <Directory /path/to/project/public>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+### With Tailwind CSS in Development
+
+To run with Tailwind CSS in watch mode (rebuilds CSS on changes):
+
+```bash
+npm run dev
+```
+
+Then in another terminal run either:
+- `php -S localhost:8000 -t public` (PHP server)
+- Or access via Apache at your configured domain
+
 ## What's Included
 
 - **2 Simple Pages**: Home and About
@@ -22,8 +59,8 @@ composer start
 ```
 src/
 ├── index.php          # App entry point
-├── config/env.php     # Environment config
-├── layout/Layout.php  # HTML layout
+├── layout/
+    └── Layout.php     # Main layout
 └── pages/
     ├── HomePage.php   # Home page
     └── AboutPage.php  # About page
