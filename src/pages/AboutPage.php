@@ -37,7 +37,7 @@ return (new Component(fn() => <<<HTML
                <div class="bg-gray-100 p-4 rounded-lg mb-6">
                   <code class="text-sm">
                      composer create-project phpspa/phpspa MyApp<br>
-                     cd MyApp<br>
+                     cd MyApp<br><br>
                      composer start
                   </code>
                </div>
@@ -61,7 +61,7 @@ return (new Component(fn() => <<<HTML
                <div class="bg-gray-100 p-4 rounded-lg mb-6">
                   <code class="text-sm">
                      npm run dev &nbsp;&nbsp;&nbsp;&nbsp;# Start Tailwind in watch mode<br>
-                     php -S localhost:8000 -t public &nbsp;&nbsp;&nbsp;# Start PHP server (in another terminal)
+                     composer start &nbsp;&nbsp;&nbsp;# Start server (in another terminal)
                   </code>
                </div>
 

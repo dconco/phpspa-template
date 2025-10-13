@@ -7,6 +7,7 @@ A simple, minimal template for building single-page applications with PHP using 
 ```bash
 composer create-project phpspa/phpspa MyApp
 cd MyApp
+
 composer start
 ```
 
@@ -44,7 +45,7 @@ npm run dev
 ```
 
 Then in another terminal run either:
-- `php -S localhost:8000 -t public` (PHP server)
+- `composer start` (PHP server)
 - Or access via Apache at your configured domain
 
 ## What's Included
