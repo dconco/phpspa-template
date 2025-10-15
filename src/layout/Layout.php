@@ -25,7 +25,6 @@ return fn() => <<<HTML
 
       <div id="app"></div>
 
-      <script src="https://unpkg.com/phpspa-js@latest"></script>
    </body>
    </html>
 HTML;

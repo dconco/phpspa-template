@@ -1,11 +1,11 @@
 <?php
 
-use phpSPA\Component;
+use PhpSPA\Component;
 
-use function Component\createState;
+use function Component\useState;
 
 return (new Component(function() {
-   $counter = createState('counter', 1);
+   $counter = useState('counter', 1);
 
    return <<<HTML
       <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">

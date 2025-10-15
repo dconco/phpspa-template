@@ -1,6 +1,6 @@
 <?php
 
-use phpSPA\Component;
+use PhpSPA\Component;
 
 return (new Component(fn() => <<<HTML
    <div class="min-h-screen bg-white">
