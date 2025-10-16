@@ -1,6 +1,6 @@
 # PhpSPA Template
 
-A simple, minimal template for building single-page applications with PHP using the [phpSPA framework](https://github.com/dconco/phpspa).
+A simple, minimal template for building single-page applications with PHP using the [PhpSPA Framework](https://github.com/dconco/phpspa).
 
 ## Quick Start
 
@@ -77,4 +77,4 @@ That's it! Simple and ready to go.
 
 ---
 
-Built with [phpSPA Framework](https://github.com/dconco/phpspa)
+Built with [PhpSPA Framework](https://phpspa.vercel.app)
