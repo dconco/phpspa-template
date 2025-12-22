@@ -4,7 +4,7 @@ use PhpSPA\App;
 use PhpSPA\Compression\Compressor;
 use PhpSPA\Http\Response;
 
-$app = new App(require 'layout/Layout.php')
+new App(require 'layout/Layout.php')
    ->attach(require 'pages/HomePage.php')
    ->attach(require 'pages/AboutPage.php')
 
@@ -12,13 +12,11 @@ $app = new App(require 'layout/Layout.php')
    ->meta(charset: 'UTF-8')
    ->meta(name: 'viewport', content: 'width=device-width, initial-scale=1.0')
 
-   ->link(content: '/dist/tailwind.css');
+   ->link(content: '/dist/tailwind.css')
 
-// --- Enable Compressing ---
-if (getenv('APP_ENV') === 'production') $app->compression(Compressor::LEVEL_EXTREME);
+   // --- Enable Compressing based on the app environment ---
+   ->compressionEnvironment(getenv('APP_ENV') ?: 'development')
 
-
-$app
    ->defaultTargetID('app')
    ->run();
 
