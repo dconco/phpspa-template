@@ -23,7 +23,7 @@
       ],
       "post-create-project-cmd": [
          "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
-         "command -v pnpm && (pnpm install && pnpm run build) || (npm install && npm run build)"
+         "(pnpm install || npm install) && (pnpm build || npm run build)"
       ]
    },
    "minimum-stability": "stable",
