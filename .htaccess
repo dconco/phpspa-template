@@ -1,16 +1,30 @@
 <IfModule mod_rewrite.c>
    RewriteEngine On
 
+   # If this project is served from the repository root (shared hosting fallback),
+   # explicitly deny access to non-public app files.
+   # This is defense-in-depth in case routing or server config changes.
+
+   # Block dotfiles (e.g. .env, .git)
+   RewriteRule (^|/)\.[^/]+ - [F,L]
+
+   # Block common non-public directories
+   RewriteRule ^(?:vendor|src)/ - [F,L]
+
+   # Block common non-public files at the repo root
+   RewriteRule ^(?:composer\.(?:json|lock)|package\.json|pnpm-lock\.yaml|yarn\.lock|npm-shrinkwrap\.json)$ - [F,L]
+   RewriteRule ^(?:phpunit\.xml(?:\.dist)?|\.env(?:\..*)?)$ - [F,L]
+
    # Accept Authorization Header
    RewriteCond %{HTTP:Authorization} ^(.+)$
    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-   # Check if requested file exists and serve it
-   RewriteCond %{REQUEST_FILENAME} -f
-   RewriteRule ^(.*)$ $1 [L]
+   # Check if requested file exists in /public/ directory and serve it
+   RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+   RewriteRule ^(.*)$ public/$1 [L]
 
    # Send all other requests (including directories, non-existent files) to bootstrap
-   RewriteRule ^(.*)$ index.php [QSA,L]
+   RewriteRule ^(.*)$ public/index.php [QSA,L]
 
    # Serve correct MIME type for Web App Manifest
    AddType application/manifest+json .webmanifest

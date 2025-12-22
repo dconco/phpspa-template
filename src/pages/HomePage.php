@@ -2,13 +2,23 @@
 
 use PhpSPA\Component;
 
+use function Component\useEffect;
 use function Component\useState;
 
-return (new Component(function() {
-   $counter = useState('counter', 1);
+return new Component(function() {
+   $counter = useState('counter', 0);
+
+   // --- Reset counter anytime it was updated to value less than 0 ---
+   useEffect(function () use ($counter) {
+      $state = $counter();
+
+      if (!is_int($state) || $state < 0) {
+         $counter(0);
+      }
+   }, [$counter]);
 
    return <<<HTML
-      <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div class="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100">
          <div class="container mx-auto px-4 py-20">
             <div class="text-center">
                <h1 class="text-6xl font-bold text-gray-900 mb-6">
@@ -18,12 +28,8 @@ return (new Component(function() {
                   A simple, fast PhpSPA single-page application template
                </p>
                <div class="space-x-4">
-                  <Component.Link to="/about" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
-                     Get Started
-                  </Component.Link>
-                  <a href="https://github.com/dconco/phpspa" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors">
-                     Documentation
-                  </a>
+                  <Component.Link children="Get Started" to="/about" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors" />
+                  <Component.Link children="Documentation" to="https://github.com/dconco/phpspa" class="bg-gray-100 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors" />
                </div>
             </div>
 
@@ -53,7 +59,7 @@ return (new Component(function() {
                   <div class="text-center">
                      <div class="text-3xl font-bold text-blue-600 mb-4" id="counter">{$counter}</div>
                      <div class="space-x-2">
-                        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors" onclick="setState('counter', $counter - 1)">
+                        <button class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm transition-colors" onclick="setState('counter', function(pv) { return pv - 1 })">
                            ➖ Decrease
                         </button>
                         <button class="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm transition-colors" onclick="setState('counter', $counter + 1)">
@@ -66,6 +72,6 @@ return (new Component(function() {
          </div>
       </div>
    HTML;
-}))
-->route('/')
-->title('PhpSPA Template');
+})
+   ->route('/')
+   ->title('PhpSPA Template');

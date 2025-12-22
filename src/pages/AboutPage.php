@@ -2,7 +2,7 @@
 
 use PhpSPA\Component;
 
-return (new Component(fn() => <<<HTML
+return new Component(fn() => <<<HTML
    <div class="min-h-screen bg-white">
       <div class="container mx-auto px-4 py-20">
          <div class="max-w-4xl mx-auto">
@@ -14,7 +14,7 @@ return (new Component(fn() => <<<HTML
                </p>
                
                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Features</h2>
-               <ul class="-space-y-3 mb-8">
+               <ul class="space-y-2 mb-8">
                   <li class="flex items-center">
                      <span class="w-2 h-2 bg-blue-600 rounded-full mr-3"></span>
                      Fast and lightweight
@@ -66,14 +66,14 @@ return (new Component(fn() => <<<HTML
                </div>
 
                <p class="text-gray-600">
-                  Visit <a href="https://github.com/dconco/phpspa" class="text-blue-600 hover:underline">
-                  the documentation</a> to learn more.
+                  Visit <Component.Link to="https://github.com/dconco/phpspa" class="text-blue-600 hover:underline">
+                  the documentation</Component.Link> to learn more.
                </p>
             </div>
          </div>
       </div>
    </div>
    HTML
-))
-->route('/about')
-->title('About - PhpSPA Template');
+)
+   ->route('/about')
+   ->title('About - PhpSPA Template');
