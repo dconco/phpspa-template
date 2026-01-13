@@ -5,7 +5,7 @@ use PhpSPA\Component;
 use function Component\useEffect;
 use function Component\useState;
 
-return new Component(function() {
+return (new Component(function() {
    $counter = useState('counter', 0);
 
    // --- Reset counter anytime it was updated to value less than 0 ---
@@ -72,6 +72,6 @@ return new Component(function() {
          </div>
       </div>
    HTML;
-})
+}))
    ->route('/')
    ->title('PhpSPA Template');
