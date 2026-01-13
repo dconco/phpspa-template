@@ -2,7 +2,7 @@
 
 use PhpSPA\Component;
 
-return new Component(fn() => <<<HTML
+return (new Component(fn() => <<<HTML
    <div class="min-h-screen bg-white">
       <div class="container mx-auto px-4 py-20">
          <div class="max-w-4xl mx-auto">
@@ -74,6 +74,6 @@ return new Component(fn() => <<<HTML
       </div>
    </div>
    HTML
-)
+))
    ->route('/about')
    ->title('About - PhpSPA Template');
