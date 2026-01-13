@@ -4,7 +4,7 @@ use PhpSPA\App;
 use PhpSPA\Compression\Compressor;
 use PhpSPA\Http\Response;
 
-new App(require 'layout/Layout.php')
+(new App(require 'layout/Layout.php'))
    ->attach(require 'pages/HomePage.php')
    ->attach(require 'pages/AboutPage.php')
 
